@@ -579,7 +579,6 @@
 	</style>
 	<script src="js/wp-emoji-release.min.js" defer=""></script>
 </head>
-<!-- Tags Google ADS -->
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16492112717"></script>
 <script>
@@ -589,6 +588,36 @@
 
   gtag('config', 'AW-16492112717');
 </script>
+<!-- Event snippet for Contato whatsapp conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<script>
+	function gtag_report_conversion(url) {
+	  var callback = function () {
+		if (typeof(url) != 'undefined') {
+		  window.location = url;
+		}
+	  };
+	  gtag('event', 'conversion', {
+		  'send_to': 'AW-16492112717/PwwMCK7ttZ0ZEM3Whrg9',
+		  'event_callback': callback
+	  });
+	  console.log('gtag_report_conversion called');
+	  return false;
+	}
+
+	document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('a').forEach(anchor => {
+            anchor.addEventListener('click', function(event) {
+                if (this.href.includes('whatsapp')) {
+                    gtag_report_conversion();
+                }
+            });
+        });
+    });
+
+	</script>
+	
+	
 <body id="top"
 	class="home page-template page-template-elementor_header_footer page page-id-5 header-horizontal site-layout-full elementor-default elementor-template-full-width elementor-kit-7 elementor-page elementor-page-5"
 	itemtype="https://schema.org/WebPage" itemscope="">
